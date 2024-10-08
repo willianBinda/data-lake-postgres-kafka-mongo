@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: origem
+      POSTGRES_PASSWORD: origem
+      POSTGRES_DB: origem
+    volumes:
+      - pgdata-origem:/var/lib/postgresql/data-origem  # Define volume para persistência
+    ports:
+      - "5432:5432"  # Exponha a porta para conexão externa
+
+volumes:
+  pgdata-origem:

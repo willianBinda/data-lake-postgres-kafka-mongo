@@ -1,0 +1,19 @@
+{
+  "name": "mongo-sink-connector",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "tasks.max": "1",
+    "topics": "postgres.public.usuarios",
+    "connection.uri": "mongodb://admin:admin@localhost:27017",
+    "database": "destino",
+    "collection": "usuarios",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "transforms": "ExtractAfter",
+    "transforms.ExtractAfter.type": "org.apache.kafka.connect.transforms.ExtractField$Value",
+    "transforms.ExtractAfter.field": "after",
+    "upsert": "true"
+  }
+}
